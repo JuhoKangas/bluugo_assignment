@@ -1,10 +1,13 @@
 from django.db import models
+from django.core.validators import FileExtensionValidator
 
 # Create your models here.
 
 
 class File(models.Model):
-    file = models.FileField(upload_to="uploads/")
+    file = models.FileField(
+        validators=[FileExtensionValidator(allowed_extensions=["json"])]
+    )
 
 
 class Vehicle(models.Model):
